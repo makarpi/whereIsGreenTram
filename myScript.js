@@ -10,7 +10,7 @@ const readActualPositionOfGreenTram = () => {
 
                 document.getElementById('actualPositionOfGreenTram').innerHTML = `Pozycja z godziny: ${element['generated']} <br/> Linia nr: ${element['routeShortName']} <br/> ${element['lat']} ${element['lon']}`;
                 
-                const map = L.map('map').setView([element['lat'], element['lon']], 13);
+                const map = L.map('map').setView([element['lat'], element['lon']], 16);
 
                 const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     maxZoom: 19,
