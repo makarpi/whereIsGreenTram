@@ -9,6 +9,18 @@ const readActualPositionOfGreenTram = () => {
                 console.log(element['lat'] + " " + element['lon']); 
 
                 document.getElementById('actualPositionOfGreenTram').innerHTML = `Pozycja z godziny: ${element['generated']} <br/> Linia nr: ${element['routeShortName']} <br/> ${element['lat']} ${element['lon']}`;
+                
+                const map = L.map('map').setView([element['lat'], element['lon']], 13);
+
+                const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 19,
+                    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                }).addTo(map);
+
+                const popup = L.popup()
+                .setLatLng([element['lat'], element['lon']])
+                .setContent('Jestem tutaj :)')
+                .openOn(map);
             }
         });
     })
